@@ -1,0 +1,13 @@
+database:
+  endpoint: "mysql://root:root@localhost/running_tracker"
+  max_connections: 10
+
+cassandra_database:
+  keyspace: "running-tracker"
+  cluster:
+    hosts:
+      - "127.0.0.1"
+
+sessions:
+  redis_endpoint: "redis://localhost:6379/running-tracker"
+  access_token_lifetime: 3600

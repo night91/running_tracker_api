@@ -1,0 +1,14 @@
+database:
+  endpoint: REPLACE_ME
+  max_connections: REPLACE_ME
+  servers: []
+
+cassandra_database:
+  keyspace: "running-tracker"
+  cluster:
+    hosts:
+      - "127.0.0.1"
+
+sessions:
+  endpoint: REPLACE_ME
+  session_lifetime: 36000

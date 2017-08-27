@@ -33,6 +33,7 @@ GEM
     mustermann (1.0.0)
     mustermann-grape (1.0.0)
       mustermann (~> 1.0.0)
+    mysql (2.9.1)
     mysql2 (0.4.9)
     puma (3.10.0)
     rack (2.0.3)
@@ -40,6 +41,10 @@ GEM
       rack (>= 0.4)
     rack-protection (2.0.0)
       rack
+    redis (3.3.3)
+    redis-sessions (0.1.0)
+      grape (~> 1.0)
+      redis (~> 3.2)
     running_tracker_cassandra_database (0.1.0)
       cassandra-driver (~> 3.2)
     running_tracker_database (0.1.0)
@@ -66,10 +71,13 @@ PLATFORMS
 
 DEPENDENCIES
   grape (~> 1.0)
+  mysql (~> 2.9)
+  mysql2 (~> 0.4)
   puma (~> 3.10)
+  redis-sessions (~> 0.1)
   running_tracker_cassandra_database (~> 0.1)
   running_tracker_database (~> 0.1)
   sinatra (~> 2.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

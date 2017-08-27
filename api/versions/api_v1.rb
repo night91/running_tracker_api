@@ -1,11 +1,15 @@
-module RunningTracker
-  class APIV1 < Grape::API
-    format :json
+require_relative '../routes/users'
+require_relative '../routes/auth'
 
-    resource :test do
-    	get "/" do
-    		"hello world!"
-    	end	
+module RunningTracker
+  module V1
+    class Base < Grape::API
+      version 'v1', using: :path
+      format :json
+      prefix :api
+
+      mount RunningTracker::V1::Users
+      mount RunningTracker::V1::Auth
     end
   end
 end
