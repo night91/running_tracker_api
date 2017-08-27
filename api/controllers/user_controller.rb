@@ -1,9 +1,13 @@
-module RunningTracke
+module RunningTracker
 	module Controllers
-		class UserController
+		class User
 			class << self
-				def user_data
-					
+				def active_user_data(user_id)
+					RunningTrackerDatabase::User.retrieve(Services.database, user_id).to_h
+				end
+
+				def create_user(data)
+					RunningTrackerDatabase::User.create(Services.database, data)
 				end
 			end
 		end

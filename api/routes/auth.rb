@@ -4,10 +4,12 @@ module RunningTracker
       format :json
 
       resource :auth do
-        get '/login' do
-          params[:email] = 'eddyr.morales@gmail.com'
-          params[:password] = '123'
-
+        desc 'Login and return the access token'
+        params do
+          requires :email, type: String, desc: 'User email'
+          requires :password, type: String, desc: 'User password'
+        end
+        post '/login' do
           if RunningTrackerDatabase::Login.authorized?(RunningTracker::Services.database, params[:email], params[:password])
             login = RunningTrackerDatabase::Login.retrieve(RunningTracker::Services.database, params[:email])
             auth_token = create_session(login.user_id)
@@ -17,10 +19,14 @@ module RunningTracker
           end
         end
 
-        get '/revoke' do
+        post '/revoke' do
           end_session
         end
       end
-  	end
+  	
+      rescue_from Grape::Exceptions::ValidationErrors do |e|
+        error!(e, 400)
+      end
+    end
 	end
 end

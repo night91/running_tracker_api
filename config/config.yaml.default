@@ -10,5 +10,5 @@ cassandra_database:
       - "127.0.0.1"
 
 sessions:
-  endpoint: REPLACE_ME
-  session_lifetime: 36000
+  redis_endpoint: REPLACE_ME
+  access_token_lifetime: 36000
